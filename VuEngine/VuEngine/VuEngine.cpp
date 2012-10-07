@@ -3,9 +3,16 @@
 
 #include "stdafx.h"
 #include "VuEngine.h"
+#include "debug.h"
+
+#include <time.h>
+#include <string.h>
 
 #include <gl/GL.h>
 #include <gl/GLU.h>
+
+#include <glm/glm.hpp>
+#include <glm/gtx/compatibility.hpp>
 
 #define MAX_LOADSTRING 100
 
@@ -64,11 +71,28 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_VUENGINE));
 
 	// Main message loop:
+	LARGE_INTEGER systemFrequency;
+	QueryPerformanceFrequency(&systemFrequency);
+	LARGE_INTEGER lastTickCount;	// used to produce DT
+	QueryPerformanceCounter(&lastTickCount);
+
+	glm::vec4 rgbaColor = glm::vec4(1.0, 1.0, 1.0, 1.0);
+
+	char debugStr[100];
 
 	while(1) 
 	{
+		LARGE_INTEGER currentTickCount;
+		QueryPerformanceCounter(&currentTickCount);
+		float dt = float(currentTickCount.QuadPart - lastTickCount.QuadPart)/systemFrequency.QuadPart;
+		lastTickCount = currentTickCount;
+		//std::cout << dt << std::endl;
+		sprintf_s(debugStr, sizeof(debugStr), "DT: %f\n", dt);
+		OutputDebugStringA(debugStr);
+
 		// draw the new frame
-		glClearColor(1.0,1.0,0.0,1.0);
+		rgbaColor = glm::lerp(rgbaColor, glm::vec4(0.0, 0.0, 0.0, 1.0), dt);
+		glClearColor(rgbaColor.x, rgbaColor.y, rgbaColor.z, rgbaColor.w);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// swap buffers
@@ -82,6 +106,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
+
 	}
 	return (int) msg.wParam;
 }

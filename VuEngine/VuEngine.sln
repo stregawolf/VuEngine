@@ -1,7 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+# Visual C++ Express 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VuEngine", "VuEngine\VuEngine.vcxproj", "{6D13940A-8379-48D7-A7B8-E5164F44E6E8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B45B23D9-48E7-4A98-A47F-2DA5DFE631D7} = {B45B23D9-48E7-4A98-A47F-2DA5DFE631D7}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glm", "GLM\GLM.vcxproj", "{B45B23D9-48E7-4A98-A47F-2DA5DFE631D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +18,10 @@ Global
 		{6D13940A-8379-48D7-A7B8-E5164F44E6E8}.Debug|Win32.Build.0 = Debug|Win32
 		{6D13940A-8379-48D7-A7B8-E5164F44E6E8}.Release|Win32.ActiveCfg = Release|Win32
 		{6D13940A-8379-48D7-A7B8-E5164F44E6E8}.Release|Win32.Build.0 = Release|Win32
+		{B45B23D9-48E7-4A98-A47F-2DA5DFE631D7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B45B23D9-48E7-4A98-A47F-2DA5DFE631D7}.Debug|Win32.Build.0 = Debug|Win32
+		{B45B23D9-48E7-4A98-A47F-2DA5DFE631D7}.Release|Win32.ActiveCfg = Release|Win32
+		{B45B23D9-48E7-4A98-A47F-2DA5DFE631D7}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
