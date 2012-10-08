@@ -5,6 +5,8 @@
 #include "VuEngine.h"
 #include "debug.h"
 
+#include "Math\Header Files\VUColor.h"
+
 #include <time.h>
 #include <string.h>
 
@@ -76,9 +78,9 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	LARGE_INTEGER lastTickCount;	// used to produce DT
 	QueryPerformanceCounter(&lastTickCount);
 
-	glm::vec4 rgbaColor = glm::vec4(1.0, 1.0, 1.0, 1.0);
+	VU::cVUColorRGBA rgbaColor = VU::kVUColorGreenA1;
 
-	char debugStr[100];
+	//char debugStr[100];
 
 	while(1) 
 	{
@@ -86,13 +88,13 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		QueryPerformanceCounter(&currentTickCount);
 		float dt = float(currentTickCount.QuadPart - lastTickCount.QuadPart)/systemFrequency.QuadPart;
 		lastTickCount = currentTickCount;
-		//std::cout << dt << std::endl;
-		sprintf_s(debugStr, sizeof(debugStr), "DT: %f\n", dt);
-		OutputDebugStringA(debugStr);
+
+		//sprintf_s(debugStr, sizeof(debugStr), "DT: %f\n", dt);
+		//OutputDebugStringA(debugStr);
 
 		// draw the new frame
-		rgbaColor = glm::lerp(rgbaColor, glm::vec4(0.0, 0.0, 0.0, 1.0), dt);
-		glClearColor(rgbaColor.x, rgbaColor.y, rgbaColor.z, rgbaColor.w);
+		rgbaColor = glm::lerp(rgbaColor, VU::kVUColorBlueA1, dt);
+		glClearColor(rgbaColor.r, rgbaColor.g, rgbaColor.b, rgbaColor.a);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// swap buffers

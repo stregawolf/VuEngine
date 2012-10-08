@@ -80,6 +80,7 @@
     <None Include="VuEngine.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Math\Header Files\VUColor.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
