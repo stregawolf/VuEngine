@@ -2,10 +2,9 @@
 //
 
 #include "stdafx.h"
-#include "VuEngine.h"
-#include "debug.h"
+#include "VUEngine.h"
 
-#include "Math\Header Files\VUColor.h"
+#include "VUColor.h"
 
 #include <time.h>
 #include <string.h>

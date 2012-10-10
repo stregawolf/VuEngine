@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)\glm;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\VUGraphics\Header Files;$(ProjectDir)\VUMath\Header Files;$(ProjectDir)\VUAppMain\Header Files;$(SolutionDir)\glm;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -76,25 +76,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
-    <None Include="small.ico" />
-    <None Include="VuEngine.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Math\Header Files\VUColor.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="VuEngine.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="VuEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="VuEngine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="VUAppMain\Source Files\stdafx.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">StdAfx.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="VUAppMain\Source Files\VUEngine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="VUAppMain\Header Files\Resource.h" />
+    <ClInclude Include="VUAppMain\Header Files\stdafx.h" />
+    <ClInclude Include="VUAppMain\Header Files\targetver.h" />
+    <ClInclude Include="VUAppMain\Header Files\VUEngine.h" />
+    <ClInclude Include="VUMath\Header Files\VUColor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
